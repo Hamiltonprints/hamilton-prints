@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Hamilton Prints is an Australian 3D printing business supplying quality 3D-printed products in bulk to businesses, retailers and event organisers.">
+<meta property="og:title" content="Hamilton Prints | Bulk 3D printing in Australia">
+<meta property="og:description" content="Quality 3D-printed products, made in bulk. Request a bulk quote today.">
+<meta property="og:type" content="website">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Hamilton Prints</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout concept: a technical spec-sheet look. Concrete-grey ground, cone-orange for actions,
+   teal for labels, and fine horizontal "layer lines" as the one recurring texture. */
+:root{
+  --bg:#ECEEE8; --surface:#F7F8F4; --raised:#FFFFFF; --ink:#16211C; --muted:#4F5C55; --line:#CBD1C7;
+  --accent:#C8460E; --on-accent:#FFFFFF; --teal:#1B6A64; --layer:rgba(22,33,28,.07); --tint:rgba(200,70,14,.12); --scrim:rgba(10,18,14,.6);
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Figtree','Segoe UI',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --radius:4px; --max:1120px; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1411; --surface:#16201B; --raised:#1C2823; --ink:#E9EEE7; --muted:#9CA8A1; --line:#2A3731;
+  --accent:#FF7F45; --on-accent:#1A0C05; --teal:#63C7BC; --layer:rgba(233,238,231,.07); --tint:rgba(255,127,69,.16); --scrim:rgba(0,0,0,.7); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1411; --surface:#16201B; --raised:#1C2823; --ink:#E9EEE7; --muted:#9CA8A1; --line:#2A3731;
+  --accent:#FF7F45; --on-accent:#1A0C05; --teal:#63C7BC; --layer:rgba(233,238,231,.07); --tint:rgba(255,127,69,.16); --scrim:rgba(0,0,0,.7); color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--body);-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,6.2vw,4.1rem);font-weight:800}
+h2{font-size:clamp(1.65rem,3.8vw,2.4rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+main:focus{outline:none}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:max(16px,3vw)}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--bg);padding:.6rem 1rem;z-index:60}
+.skip:focus{left:8px;top:8px}
+.eyebrow{font:500 .75rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.small{font-size:.875rem;color:var(--muted)}
+.lede{font-size:1.15rem;color:var(--muted);max-width:56ch}
+.stack{display:grid;gap:1.25rem;align-content:center}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:46px;padding:0 1.25rem;border-radius:var(--radius);font:600 1rem var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;text-align:center}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{border-color:var(--ink);background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--layer)}
+.btn-sm{min-height:40px;padding:0 1rem;font-size:.95rem}
+.btn[disabled]{opacity:.6;cursor:progress}
+
+/* header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.head-in{display:flex;align-items:center;gap:1rem;min-height:64px}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font:800 1.3rem var(--display);letter-spacing:-.02em;white-space:nowrap}
+.brand svg{display:block}
+.m1{fill:var(--accent)} .m2{fill:var(--ink)}
+.nav{display:flex;gap:.25rem;margin-inline-start:1.5rem;align-items:center}
+.nav a{padding:.5rem .75rem;text-decoration:none;font-weight:500;border-radius:var(--radius)}
+.nav a:hover{background:var(--layer)}
+.nav a[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--accent)}
+.head-actions{display:flex;align-items:center;gap:.5rem;margin-inline-start:auto}
+.cart-btn{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 .9rem;border:2px solid var(--ink);border-radius:var(--radius);text-decoration:none;font-weight:600}
+.cart-btn[aria-current="page"]{background:var(--layer)}
+.count{background:var(--accent);color:var(--on-accent);font:600 .75rem var(--mono);min-width:1.4rem;height:1.4rem;display:inline-grid;place-items:center;padding:0 .3rem;border-radius:99px}
+.menu-btn{display:none}
+@media(max-width:860px){
+  .menu-btn{display:inline-flex}
+  .nav{display:none;position:absolute;inset-inline:0;top:100%;margin:0;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--line);padding:.5rem max(16px,3vw) 1rem}
+  .nav.open{display:flex}
+  .nav a{padding:.8rem .5rem}
+}
+
+/* hero */
+.hero{padding-block:clamp(2rem,6vw,4.5rem)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.hero-grid>*{min-width:0}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.print-panel{border:1px solid var(--line);background-color:var(--surface);background-image:repeating-linear-gradient(0deg,transparent 0 7px,var(--layer) 7px 8px)}
+.print-panel>svg{display:block;width:100%;height:auto;max-width:380px;margin-inline:auto;padding:1rem}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;font:400 .8rem/1.4 var(--mono);padding:1rem;border-top:1px solid var(--line);margin:0;background:var(--surface)}
+.spec dt{color:var(--muted)} .spec dd{margin:0;text-align:right}
+.nozzle{animation:nz 5s ease-in-out infinite alternate}
+@keyframes nz{from{transform:translateY(74px)}to{transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.nozzle{animation:none}html{scroll-behavior:auto}}
+
+/* sections */
+.block{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+.block-head{display:grid;gap:.75rem;margin-bottom:2rem;max-width:62ch}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.75rem}
+.grid-3>*{min-width:0}
+.benefit{border-top:3px solid var(--accent);padding-top:1rem;display:grid;gap:.5rem;align-content:start}
+.benefit p{color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1.5rem}
+.steps li{border-top:3px solid var(--ink);padding-top:1rem;display:grid;gap:.4rem;align-content:start;min-width:0}
+.steps .n{font:500 .8rem var(--mono);color:var(--teal)}
+.steps p{color:var(--muted)}
+.cta-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;border:1px solid var(--line);background-color:var(--surface);background-image:repeating-linear-gradient(0deg,transparent 0 7px,var(--layer) 7px 8px);padding:clamp(1.25rem,4vw,2.25rem)}
+.cta-band>div{display:grid;gap:.5rem;min-width:0}
+.page-head{padding-block:clamp(2rem,5vw,3.5rem) 1.5rem;display:grid;gap:.75rem}
+.page-head p{color:var(--muted);max-width:62ch;font-size:1.1rem}
+.two{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.two>*{min-width:0}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+.copy{display:grid;gap:1rem;max-width:62ch}
+.copy p{color:var(--muted)}
+.notice{border:1.5px dashed var(--accent);background:var(--tint);padding:.75rem 1rem;font-size:.9rem;margin-bottom:1.5rem}
+
+/* shop */
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:1rem;margin-bottom:1rem}
+.toolbar .chips{grid-column:1/-1}
+@media(max-width:600px){.toolbar{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{min-height:40px;padding:0 .9rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:var(--radius);font:500 .95rem var(--body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count-line{font:400 .8rem var(--mono);color:var(--muted);margin-bottom:1rem}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,235px),1fr));gap:1.25rem;padding-bottom:3rem}
+.p-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);min-width:0}
+.p-art{position:relative;background:var(--raised);border-bottom:1px solid var(--line);aspect-ratio:4/3}
+.p-art svg{width:100%;height:100%;display:block}
+.ph-tag{position:absolute;top:.5rem;left:.5rem;font:500 .62rem var(--mono);letter-spacing:.08em;text-transform:uppercase;background:var(--bg);color:var(--muted);border:1px solid var(--line);padding:.15rem .4rem}
+.p-body{padding:1rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.p-cat{font:500 .7rem var(--mono);color:var(--teal);text-transform:uppercase;letter-spacing:.1em}
+.p-body p{color:var(--muted);font-size:.95rem}
+.p-foot{margin-top:auto;padding-top:.5rem;display:grid;gap:.75rem}
+.p-price{font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums}
+.empty{padding:2rem 0;display:grid;gap:1rem;justify-items:start}
+
+/* forms */
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1rem}
+.form-grid>*{min-width:0}
+.full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field label,legend{font-weight:600;font-size:.92rem}
+.opt{font-weight:400;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--raised);border:1.5px solid var(--line);border-radius:var(--radius);padding:.6rem .75rem;min-height:46px;width:100%}
+textarea{resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.8}
+.form-panel{border:1px solid var(--line);background:var(--surface);padding:clamp(1rem,3vw,1.75rem)}
+.form-status{font-size:.95rem}
+.form-status.ok{color:var(--teal);font-weight:600}
+.form-status .box{border:1.5px solid var(--accent);background:var(--tint);padding:.9rem 1rem;display:grid;gap:.6rem}
+.form-status textarea{min-height:140px;font:400 .85rem/1.5 var(--mono)}
+
+/* tiers, steppers, swatches */
+.tiers{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.95rem}
+.tiers th,.tiers td{text-align:left;padding:.55rem .6rem;border-bottom:1px solid var(--line)}
+.tiers th{font:500 .72rem var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.tiers td:last-child,.tiers th:last-child{text-align:right}
+.tiers tr.active td{background:var(--tint);font-weight:700}
+.table-scroll{overflow-x:auto}
+.stepper{display:inline-flex;border:1.5px solid var(--line);background:var(--raised);width:max-content}
+.stepper button{width:44px;min-height:44px;border:0;background:transparent;color:var(--ink);font:600 1.2rem var(--body);cursor:pointer}
+.stepper button:hover{background:var(--layer)}
+.stepper input{width:72px;border:0;border-inline:1.5px solid var(--line);border-radius:0;text-align:center;padding:0;min-height:44px;-moz-appearance:textfield;appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+.swatches{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+.sw{width:36px;height:36px;border:2px solid var(--line);background:var(--c);border-radius:50%;cursor:pointer;padding:0}
+.sw[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:2px}
+
+/* product dialog */
+dialog{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:0;width:min(900px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;margin:auto}
+dialog::backdrop{background:var(--scrim)}
+.pd{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.pd>*{min-width:0}
+@media(max-width:720px){.pd{grid-template-columns:1fr}}
+.pd-media{position:relative;background:var(--raised);border-inline-end:1px solid var(--line);display:grid;align-items:center}
+.pd-art svg{display:block;width:100%;height:auto}
+.pd-info{padding:1.5rem;display:grid;gap:1rem;align-content:start}
+.pd-close{position:absolute;top:.75rem;right:.75rem;z-index:2}
+.pd-info h2{font-size:1.8rem;padding-inline-end:5rem}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:.25rem 1rem;margin:0;font-size:.92rem}
+.meta dt{color:var(--muted)} .meta dd{margin:0}
+.sum{font-weight:600;min-height:3em}
+
+/* cart */
+.lines{display:grid;gap:0;border-top:1px solid var(--line)}
+.line{display:grid;grid-template-columns:84px 1fr auto;gap:.75rem 1rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:start}
+.line>*{min-width:0}
+.line .thumb{background:var(--raised);border:1px solid var(--line)}
+.line .thumb svg{display:block;width:100%;height:auto}
+.line .info{display:grid;gap:.5rem}
+.line .tot{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.linklike{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;font:inherit;cursor:pointer;justify-self:start}
+.totals{display:grid;gap:.5rem;margin-top:1.5rem;max-width:420px;margin-inline-start:auto}
+.totals div{display:flex;justify-content:space-between;gap:1rem;font-variant-numeric:tabular-nums}
+.totals .grand{font:700 1.3rem var(--display);border-top:2px solid var(--ink);padding-top:.5rem}
+@media(max-width:600px){.line{grid-template-columns:64px 1fr}.line .tot{grid-column:2;text-align:left}}
+
+/* prose + footer */
+.prose{max-width:68ch;display:grid;gap:1rem;padding-bottom:3rem}
+.prose h2{font-size:1.35rem;margin-top:1rem}
+.prose p,.prose li{color:var(--muted)}
+.prose ul{margin:0;padding-inline-start:1.2rem;display:grid;gap:.4rem}
+.site-foot{background-color:var(--surface);background-image:repeating-linear-gradient(0deg,transparent 0 7px,var(--layer) 7px 8px);border-top:1px solid var(--line);margin-top:2rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2rem;padding-block:2.5rem 1.5rem}
+.foot-grid>*{min-width:0}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+.foot-grid h3{font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem}
+.foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
+.foot-grid a{text-decoration:none}
+.foot-grid a:hover{text-decoration:underline}
+.foot-base{padding-block:1rem 2rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.email-line{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.9rem;overflow-wrap:anywhere}
+
+#toast{position:fixed;inset-inline:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:420px;margin-inline:auto;background:var(--ink);color:var(--bg);padding:.8rem 1rem;z-index:70;font-weight:600;border-radius:var(--radius)}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><pattern id="ll" width="10" height="4" patternUnits="userSpaceOnUse"><rect width="10" height="1.2" fill="#000" opacity=".17"/></pattern></defs></svg>
+
+<a class="skip" href="#" data-action="skip">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#home" aria-label="Hamilton Prints home">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect class="m1" x="9" y="4" width="10" height="5"/><rect class="m2" x="5" y="11" width="18" height="5"/><rect class="m2" x="2" y="18" width="24" height="5"/></svg>
+      <span>Hamilton Prints</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#shop" data-r="shop">Shop</a>
+      <a href="#bulk" data-r="bulk">Bulk orders</a>
+      <a href="#custom" data-r="custom">Custom printing</a>
+      <a href="#about" data-r="about">About</a>
+      <a href="#contact" data-r="contact">Contact</a>
+    </nav>
+    <div class="head-actions">
+      <a class="cart-btn" href="#cart" data-r="cart" aria-label="Cart">Cart <span id="cartCount" class="count" hidden>0</span></a>
+      <button class="menu-btn btn btn-ghost btn-sm" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" data-action="menu">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1"></main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Hamilton Prints</h3>
+        <p class="small">Australian 3D printing for businesses, retailers and event organisers. Bulk orders welcome.</p>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="#shop">All products</a></li>
+          <li><a href="#bulk">Bulk orders</a></li>
+          <li><a href="#custom">Custom printing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <ul>
+          <li><a href="#shipping">Shipping</a></li>
+          <li><a href="#returns">Returns</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#terms">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p class="email-line" id="footEmail"></p>
+        <p class="small">Australia</p>
+      </div>
+    </div>
+    <div class="foot-base"><span id="yr"></span> Hamilton Prints. All prices in Australian dollars (AUD).</div>
+  </div>
+</footer>
+
+<dialog id="pd-dialog" aria-labelledby="pd-title"></dialog>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<noscript><div class="wrap"><p class="notice">This website needs JavaScript turned on to show products and the cart.</p></div></noscript>
+<script>
+(function () {
+'use strict';
+
+/* =====================================================================
+   EDIT THIS SECTION: your details, products and prices.
+   Everything below the "END OF EDITABLE SECTION" line is the site's engine.
+   ===================================================================== */
+
+const CONFIG = {
+  businessName: 'Hamilton Prints',
+  email: 'hello@yourdomain.com.au',   // replace with your real business email
+  formEndpoint: '',                   // paste your Formspree (or similar) form URL here to make forms send
+  showExampleNotices: true            // set to false before launch to hide "example" labels
+};
+
+// Filament colours you offer. Name -> display colour.
+const COLOURS = {
+  White: '#F1F1EC', Black: '#23272A', Grey: '#8D9490', Orange: '#E8661F',
+  Yellow: '#F2C230', Blue: '#2F63B8', Green: '#2E8B57', Red: '#C4352B'
+};
+
+// Bulk pricing tiers. "factor" multiplies the product's standard price.
+// 1 = standard price, 0.85 = 15% off. A tier with quote:true has no automatic price.
+const TIERS = [
+  { min: 1,   max: 9,  factor: 1 },
+  { min: 10,  max: 49, factor: 0.85 },
+  { min: 50,  max: 99, factor: 0.72 },
+  { min: 100, quote: true }
+];
+
+const CATEGORIES = ['Safety & Display', 'Retail Display', 'Desk & Cable', 'Storage', 'Promo & Giveaways'];
+
+// price = standard price per unit in AUD (EXAMPLE PRICES, replace with your own).
+// art = which placeholder picture to draw. colours = which colours this product comes in.
+const PRODUCTS = [
+  { id: 'mini-cone', name: 'Miniature Traffic Cone', cat: 'Safety & Display', price: 4.50, art: 'cone', colours: ['Orange', 'Yellow', 'Blue', 'Red'], size: '80 mm tall', featured: true,
+    desc: 'A small display cone for safety-themed counters, training kits, trade stands and giveaways.' },
+  { id: 'sign-stand', name: 'Mini Safety Sign Stand', cat: 'Safety & Display', price: 9.00, art: 'sign', colours: ['Yellow', 'Orange', 'White'], size: '110 mm tall',
+    desc: 'A compact A-frame stand for small safety and information cards on desks and counters.' },
+  { id: 'table-number', name: 'Table Number Stand', cat: 'Safety & Display', price: 6.50, art: 'number', colours: ['Black', 'White', 'Grey'], size: '100 mm tall',
+    desc: 'A weighted base with a slot for numbered cards. Suits cafes, functions and events.' },
+  { id: 'riser', name: 'Retail Product Riser', cat: 'Retail Display', price: 12.00, art: 'riser', colours: ['Black', 'White', 'Grey'], size: '150 x 80 x 50 mm',
+    desc: 'A stepped riser that lifts small products so customers can see them on a counter or shelf.', featured: true },
+  { id: 'tag-holder', name: 'Shelf Price Tag Holder', cat: 'Retail Display', price: 3.50, art: 'tag', colours: ['Black', 'White', 'Grey', 'Blue'], size: '70 mm wide',
+    desc: 'A small angled holder that keeps price cards upright and easy to read.' },
+  { id: 'card-holder', name: 'Business Card Holder', cat: 'Retail Display', price: 7.00, art: 'cardholder', colours: ['Black', 'White', 'Grey', 'Blue'], size: '95 x 35 x 30 mm',
+    desc: 'A tidy counter holder for business cards or small flyers.' },
+  { id: 'cable-clips', name: 'Desk Cable Clip Set (5)', cat: 'Desk & Cable', price: 6.00, art: 'clips', colours: ['Black', 'White', 'Grey'], size: 'Fits cables up to 6 mm',
+    desc: 'A set of five clips that hold charging cables at the edge of a desk.' },
+  { id: 'cable-block', name: 'Cable Organiser Block', cat: 'Desk & Cable', price: 8.50, art: 'cableblock', colours: ['Black', 'White', 'Grey', 'Green'], size: '90 x 50 x 30 mm',
+    desc: 'A weighted block with four slots that keeps cables from sliding off the desk.', featured: true },
+  { id: 'headphone-hook', name: 'Under-Desk Headphone Hook', cat: 'Desk & Cable', price: 7.50, art: 'hook', colours: ['Black', 'White', 'Grey'], size: '100 x 70 mm',
+    desc: 'A simple hook that screws under a desk or shelf to hold headphones.' },
+  { id: 'pen-cup', name: 'Hex Pen Cup', cat: 'Storage', price: 9.50, art: 'cup', colours: ['Black', 'White', 'Grey', 'Green', 'Blue'], size: '75 mm tall',
+    desc: 'A sturdy hexagonal cup for pens, brushes and small tools.' },
+  { id: 'parts-tray', name: 'Stackable Parts Tray', cat: 'Storage', price: 11.00, art: 'tray', colours: ['Black', 'White', 'Grey', 'Orange'], size: '120 x 90 x 25 mm',
+    desc: 'A shallow tray with dividers that stacks neatly. Good for screws, components and small stock.' },
+  { id: 'keyring', name: 'Custom Branded Keyring', cat: 'Promo & Giveaways', price: 3.00, art: 'keyring', colours: ['Black', 'White', 'Orange', 'Blue', 'Red', 'Yellow'], size: '55 x 40 mm',
+    desc: 'A keyring tag with your name or logo. Ask us about branding and artwork when you order in bulk.', featured: true },
+  { id: 'desk-plate', name: 'Branded Desk Plate', cat: 'Promo & Giveaways', price: 14.00, art: 'plaque', colours: ['Black', 'White', 'Grey', 'Blue'], size: '160 x 40 mm',
+    desc: 'A small angled name or logo plate for desks, reception counters and events.' }
+];
+
+/* ===================== END OF EDITABLE SECTION ===================== */
+
+const money = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' });
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const round2 = n => Math.round(n * 100) / 100;
+const byId = id => PRODUCTS.find(p => p.id === id);
+
+/* ---------- pricing ---------- */
+const tierFor = q => TIERS.find(t => q >= t.min && q <= (t.max == null ? Infinity : t.max));
+const tierLabel = t => (t.max != null ? t.min + '–' + t.max + ' units' : t.min + '+ units');
+const priceAt = (p, t) => (t.quote ? null : round2(p.price * t.factor));
+const unitPrice = (p, q) => priceAt(p, tierFor(q));
+const lowestPrice = p => Math.min.apply(null, TIERS.filter(t => !t.quote).map(t => priceAt(p, t)));
+
+/* ---------- state ---------- */
+const state = { cat: 'All', q: '', sort: 'featured', prefill: null };
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('hp-cart') || '[]').filter(l => byId(l.id) && l.qty > 0); } catch (e) { cart = []; }
+function saveCart() {
+  try { localStorage.setItem('hp-cart', JSON.stringify(cart)); } catch (e) { /* storage unavailable */ }
+  const n = cart.reduce((a, l) => a + l.qty, 0), el = $('#cartCount');
+  el.textContent = n > 99 ? '99+' : n; el.hidden = n === 0;
+}
+function cartCalc() {
+  const totals = {};
+  cart.forEach(l => { totals[l.id] = (totals[l.id] || 0) + l.qty; });
+  let sub = 0, quotes = 0;
+  const lines = cart.map((l, i) => {
+    const p = byId(l.id), u = unitPrice(p, totals[l.id]);
+    if (u == null) quotes++; else sub += u * l.qty;
+    return { i: i, id: l.id, colour: l.colour, qty: l.qty, p: p, u: u, total: u == null ? null : round2(u * l.qty) };
+  });
+  return { lines: lines, sub: round2(sub), quotes: quotes };
+}
+const lineText = l => l.qty + ' x ' + l.p.name + ' (' + l.colour + ') - ' + (l.u == null ? 'quote required' : money.format(l.u) + ' each');
+
+/* ---------- placeholder product pictures ---------- */
+function lum(hex) { const n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16 & 255) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255; }
+function art(type, colour, label) {
+  const c = COLOURS[colour] || COLOURS.Orange;
+  const tx = lum(c) > 0.55 ? '#16211C' : '#F4F4F0';
+  const L = s => s.replace('/>', ' fill="' + c + '"/>') + s.replace('/>', ' fill="url(#ll)"/>');
+  const font = 'font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-weight="800"';
+  const clip = dx => L('<path transform="translate(' + dx + ' 0)" d="M0 122 V98 A14 14 0 0 1 28 98 V122 H20 V98 A6 6 0 0 0 8 98 V122 Z"/>');
+  const shapes = {
+    cone: () => L('<rect x="62" y="108" width="76" height="14" rx="2"/>') + L('<path d="M78 108 L94 34 Q100 26 106 34 L122 108 Z"/>') +
+      '<path d="M89.2 56 L110.8 56 L113.4 68 L86.6 68 Z" fill="#F4F4F0"/><path d="M84 80 L116 80 L118.5 92 L81.5 92 Z" fill="#F4F4F0"/>',
+    sign: () => L('<path d="M66 122 L88 34 L112 34 L134 122 Z"/>') + '<rect x="84" y="58" width="32" height="40" rx="3" fill="#F4F4F0"/><path d="M100 64 L111 88 L89 88 Z" fill="#16211C"/>',
+    number: () => L('<path d="M54 122 L146 122 L138 104 L62 104 Z"/>') + L('<rect x="74" y="30" width="52" height="78" rx="4"/>') +
+      '<rect x="82" y="40" width="36" height="40" rx="2" fill="#F4F4F0"/><text x="100" y="70" text-anchor="middle" ' + font + ' font-size="28" fill="#16211C">12</text>',
+    riser: () => L('<rect x="44" y="104" width="112" height="18" rx="2"/>') + L('<rect x="62" y="86" width="76" height="18" rx="2"/>') + L('<rect x="80" y="68" width="40" height="18" rx="2"/>'),
+    tag: () => '<path d="M60 98 L66 54 L134 54 L140 98 Z" fill="#F4F4F0"/><rect x="76" y="66" width="48" height="7" fill="#16211C"/><rect x="76" y="80" width="30" height="4" fill="#8D9490"/>' + L('<rect x="50" y="94" width="100" height="28" rx="3"/>'),
+    cardholder: () => '<rect x="64" y="52" width="72" height="50" rx="2" fill="#F4F4F0"/><rect x="72" y="62" width="30" height="5" fill="#16211C"/><rect x="72" y="74" width="48" height="3" fill="#8D9490"/><rect x="72" y="82" width="38" height="3" fill="#8D9490"/>' + L('<rect x="52" y="94" width="96" height="28" rx="3"/>'),
+    clips: () => '<path d="M22 102 H178" stroke="#16211C" stroke-width="5" stroke-linecap="round" fill="none"/>' + clip(36) + clip(86) + clip(136),
+    cableblock: () => '<path d="M72 74 V36 M90 74 V28 M108 74 V34 M126 74 V30" stroke="#16211C" stroke-width="4" stroke-linecap="round" fill="none"/>' + L('<rect x="56" y="70" width="88" height="52" rx="6"/>') +
+      [66, 84, 102, 120].map(x => '<rect x="' + x + '" y="70" width="12" height="26" rx="3" fill="#16211C"/>').join(''),
+    hook: () => L('<rect x="52" y="30" width="96" height="14" rx="2"/>') + L('<path d="M96 44 H108 V98 A24 24 0 0 1 60 98 V88 H72 V98 A12 12 0 0 0 96 98 Z"/>'),
+    cup: () => '<rect x="82" y="18" width="7" height="52" rx="3" fill="#16211C" transform="rotate(-14 85 70)"/><rect x="100" y="14" width="7" height="56" rx="3" fill="#8D9490"/><rect x="116" y="20" width="7" height="50" rx="3" fill="#16211C" transform="rotate(12 120 70)"/>' + L('<path d="M64 56 L136 56 L128 122 L72 122 Z"/>'),
+    tray: () => L('<path d="M56 96 L144 96 L138 74 L62 74 Z"/>') + L('<path d="M46 118 L154 118 L146 96 L54 96 Z"/>') + '<path d="M72 96 L74 118 M100 96 L100 118 M128 96 L126 118" stroke="#000" stroke-opacity=".25" stroke-width="3"/>',
+    keyring: () => '<circle cx="100" cy="32" r="14" fill="none" stroke="#8D9490" stroke-width="4"/>' + L('<rect x="58" y="44" width="84" height="70" rx="12"/>') +
+      '<circle cx="100" cy="58" r="6" style="fill:var(--raised)"/><text x="100" y="94" text-anchor="middle" ' + font + ' font-size="18" fill="' + tx + '">LOGO</text>',
+    plaque: () => L('<rect x="40" y="96" width="120" height="26" rx="3"/>') + L('<path d="M50 96 L58 58 L142 58 L150 96 Z"/>') +
+      '<text x="100" y="84" text-anchor="middle" ' + font + ' font-size="14" fill="' + tx + '">YOUR LOGO</text>'
+  };
+  const a11y = label ? 'role="img" aria-label="' + esc(label) + '"' : 'aria-hidden="true"';
+  return '<svg viewBox="0 0 200 150" ' + a11y + '><ellipse cx="100" cy="125" rx="66" ry="5" fill="#000" opacity=".12"/>' + (shapes[type] || shapes.cone)() + '</svg>';
+}
+function heroArt() {
+  const nozzle = '<g class="nozzle"><rect x="90" y="2" width="20" height="12" fill="#6E7872"/><path d="M93 14 H107 L102 24 H98 Z" fill="#6E7872"/><rect x="98" y="24" width="4" height="3" fill="#C8460E"/></g>';
+  return art('cone', 'Orange', 'Illustration of a miniature traffic cone being 3D printed').replace('</svg>', nozzle + '</svg>');
+}
+
+/* ---------- small view helpers ---------- */
+const exampleNotice = txt => (CONFIG.showExampleNotices ? '<p class="notice">' + txt + '</p>' : '');
+const pageHead = (eyebrow, title, lede) => '<div class="wrap page-head"><span class="eyebrow">' + eyebrow + '</span><h1>' + title + '</h1>' + (lede ? '<p>' + lede + '</p>' : '') + '</div>';
+const emailLine = () => '<span class="email-line"><span>' + esc(CONFIG.email) + '</span> <button type="button" class="btn btn-ghost btn-sm" data-action="copy-email">Copy</button></span>';
+
+function F(form, label, name, o) {
+  o = o || {};
+  const id = 'f-' + form + '-' + name, req = o.req ? ' required' : '', ac = o.ac ? ' autocomplete="' + o.ac + '"' : '';
+  let ctl;
+  if (o.type === 'textarea') ctl = '<textarea id="' + id + '" name="' + name + '" rows="' + (o.rows || 4) + '"' + req + (o.ph ? ' placeholder="' + esc(o.ph) + '"' : '') + '></textarea>';
+  else if (o.type === 'select') ctl = '<select id="' + id + '" name="' + name + '"' + req + '>' + o.options.map(x => '<option value="' + esc(x[0]) + '">' + esc(x[1]) + '</option>').join('') + '</select>';
+  else ctl = '<input id="' + id + '" name="' + name + '" type="' + (o.type || 'text') + '"' + req + ac + (o.ph ? ' placeholder="' + esc(o.ph) + '"' : '') + (o.extra ? ' ' + o.extra : '') + '>';
+  return '<div class="field' + (o.full ? ' full' : '') + '"><label for="' + id + '">' + label + (o.req ? '' : ' <span class="opt">(optional)</span>') + '</label>' + ctl + '</div>';
+}
+const productOptions = () => [['', 'Choose a product']].concat(PRODUCTS.map(p => [p.name, p.name]), [['Something else', 'Something else (describe below)']]);
+const formEnd = label => '<div class="full"><button class="btn btn-primary" type="submit">' + label + '</button></div><div class="form-status full" role="status" aria-live="polite"></div>';
+
+/* ---------- product card ---------- */
+function card(p) {
+  return '<article class="p-card"><div class="p-art">' + art(p.art, p.colours[0]) + (CONFIG.showExampleNotices ? '<span class="ph-tag">Placeholder image</span>' : '') + '</div>' +
+    '<div class="p-body"><span class="p-cat">' + esc(p.cat) + '</span><h3>' + esc(p.name) + '</h3><p>' + esc(p.desc) + '</p>' +
+    '<div class="p-foot"><div><span class="p-price">' + money.format(p.price) + '</span> <span class="small">each &middot; from ' + money.format(lowestPrice(p)) + ' in bulk</span></div>' +
+    '<button class="btn btn-primary btn-sm" type="button" data-action="open" data-id="' + p.id + '">View and order</button></div></div></article>';
+}
+
+/* ---------- pages ---------- */
+function homeView() {
+  return '<section class="hero"><div class="wrap hero-grid"><div class="stack">' +
+    '<span class="eyebrow">Australian 3D printing &middot; Bulk supply</span>' +
+    '<h1>Quality 3D-printed products, made in bulk.</h1>' +
+    '<p class="lede">Hamilton Prints supplies practical, repeatable 3D-printed products to businesses, retailers and event organisers. Single orders are welcome too.</p>' +
+    '<div class="actions"><a class="btn btn-primary" href="#shop">Browse products</a><a class="btn btn-ghost" href="#bulk">Request a bulk quote</a></div></div>' +
+    '<div class="print-panel">' + heroArt() +
+    '<dl class="spec"><dt>Printer</dt><dd>Bambu Lab A1</dd><dt>Build volume</dt><dd>256 &times; 256 &times; 256 mm</dd><dt>Nozzle</dt><dd>0.4 mm standard</dd><dt>Based in</dt><dd>Australia</dd><dt>Prices</dt><dd>AUD</dd></dl></div></div></section>' +
+
+    '<section class="block alt"><div class="wrap"><div class="grid-3">' +
+    '<div class="benefit"><h3>Bulk pricing that steps down</h3><p>The price per unit falls as your quantity rises. Orders of 100 units or more receive a personalised quote.</p></div>' +
+    '<div class="benefit"><h3>Made to suit your business</h3><p>Choose from our colour range, or ask about custom sizes, shapes and branding for your own products.</p></div>' +
+    '<div class="benefit"><h3>Built for repeat orders</h3><p>Our products are designed to print well in quantity, so a reorder matches the batch before it.</p></div>' +
+    '</div></div></section>' +
+
+    '<section class="block"><div class="wrap"><div class="block-head"><span class="eyebrow">Featured</span><h2>Products that suit bulk orders</h2></div>' +
+    exampleNotice('Example products, prices and pictures. Replace them with your own before launch.') +
+    '<div class="p-grid">' + PRODUCTS.filter(p => p.featured).map(card).join('') + '</div>' +
+    '<div class="actions"><a class="btn btn-ghost" href="#shop">See all products</a></div></div></section>' +
+
+    '<section class="block alt"><div class="wrap"><div class="block-head"><span class="eyebrow">How bulk ordering works</span><h2>From enquiry to delivery in four steps</h2></div>' +
+    '<ol class="steps">' +
+    '<li><span class="n">01</span><h3>Pick a product and quantity</h3><p>Browse the shop, or describe what you need on the bulk order page.</p></li>' +
+    '<li><span class="n">02</span><h3>Get your quote</h3><p>We confirm pricing, colours and timing for your quantity.</p></li>' +
+    '<li><span class="n">03</span><h3>Approve the details</h3><p>You check the product, colours and any branding before production starts.</p></li>' +
+    '<li><span class="n">04</span><h3>Production and delivery</h3><p>Your order is printed, packed and sent to you.</p></li>' +
+    '</ol></div></section>' +
+
+    '<section class="block"><div class="wrap"><div class="cta-band"><div><h2>Need 100 or more?</h2><p class="lede">Tell us what you need and we will prepare a personalised quote.</p></div>' +
+    '<a class="btn btn-primary" href="#bulk">Request a bulk quote</a></div></div></section>';
+}
+
+function shopView() {
+  return pageHead('Shop', 'Products', 'Practical products made to order. Choose a colour and quantity, and the price per unit drops as you order more.') +
+    '<div class="wrap">' + exampleNotice('All products, prices and pictures on this page are examples. Edit them in the PRODUCTS list in the site file.') +
+    '<div class="toolbar"><div class="field"><label for="q">Search products</label><input id="q" type="search" placeholder="Try cone, cable or keyring" value="' + esc(state.q) + '"></div>' +
+    '<div class="field"><label for="sort">Sort by</label><select id="sort"><option value="featured">Featured</option><option value="name">Name</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div>' +
+    '<div class="chips" id="chips" role="group" aria-label="Categories"></div></div>' +
+    '<p class="count-line" id="count" aria-live="polite"></p><div class="p-grid" id="grid"></div></div>';
+}
+
+function renderGrid() {
+  const q = state.q.trim().toLowerCase();
+  let list = PRODUCTS.filter(p => (state.cat === 'All' || p.cat === state.cat) && (!q || (p.name + ' ' + p.desc + ' ' + p.cat).toLowerCase().indexOf(q) > -1));
+  if (state.sort === 'name') list.sort((a, b) => a.name.localeCompare(b.name));
+  else if (state.sort === 'low') list.sort((a, b) => a.price - b.price);
+  else if (state.sort === 'high') list.sort((a, b) => b.price - a.price);
+  else list.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+  $('#grid').innerHTML = list.length ? list.map(card).join('') :
+    '<div class="empty full" style="grid-column:1/-1"><p>No products match that search.</p><button class="btn btn-ghost" type="button" data-action="reset">Clear search and filters</button></div>';
+  $('#count').textContent = list.length + (list.length === 1 ? ' product' : ' products');
+  $('#chips').innerHTML = ['All'].concat(CATEGORIES).map(c => '<button type="button" class="chip" data-action="chip" data-cat="' + esc(c) + '" aria-pressed="' + (state.cat === c) + '">' + esc(c) + '</button>').join('');
+}
+
+function tierTable() {
+  const rows = TIERS.map(t => '<tr><td>' + tierLabel(t) + '</td><td>' + (t.quote ? 'Personalised quote' : t.factor === 1 ? 'Standard price' : Math.round((1 - t.factor) * 100) + '% off standard price') + '</td></tr>').join('');
+  return '<div class="table-scroll"><table class="tiers"><thead><tr><th>Quantity</th><th>Price per unit</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+}
+
+function bulkView() {
+  return pageHead('Bulk orders', 'Ordering for your business?', 'Tell us the product, quantity and colours. We will confirm pricing and timing before anything is printed.') +
+    '<div class="wrap"><div class="two"><div class="copy">' +
+    '<h2>How pricing works</h2><p>Each product has a standard price. As your quantity rises, the price per unit steps down. Orders of 100 units or more, and any customised order, receive a personalised quote.</p>' +
+    tierTable() +
+    exampleNotice('These tiers and discounts are examples only. Edit the TIERS list in the site file once your prices are confirmed.') +
+    '<h2>What to include</h2><ul class="copy" style="padding-inline-start:1.2rem"><li>The product and how many you need</li><li>Colours, or a colour match you are after</li><li>Any logo or branding, and when you need the order</li></ul></div>' +
+    '<div class="form-panel"><h2 style="margin-bottom:1rem">Request a bulk quote</h2><form data-form="bulk" class="form-grid">' +
+    F('bulk', 'Your name', 'name', { req: 1, ac: 'name' }) + F('bulk', 'Business name', 'business', { req: 1, ac: 'organization' }) +
+    F('bulk', 'Email', 'email', { req: 1, type: 'email', ac: 'email' }) +
+    F('bulk', 'Product', 'product', { req: 1, type: 'select', options: productOptions() }) +
+    F('bulk', 'Quantity', 'quantity', { req: 1, type: 'number', extra: 'min="1" step="1" inputmode="numeric" placeholder="e.g. 250"' }) +
+    F('bulk', 'Colour', 'colour', { req: 1, ph: 'e.g. Orange, or 100 Black and 100 White' }) +
+    F('bulk', 'Special requirements', 'requirements', { type: 'textarea', full: 1, ph: 'Branding, deadline, delivery location, anything else we should know' }) +
+    formEnd('Send quote request') + '</form></div></div></div>';
+}
+
+function customView() {
+  return pageHead('Custom printing', 'Have your own design in mind?', 'We can look at custom products, parts and branded items. Every custom request is reviewed before pricing and production are confirmed.') +
+    '<div class="wrap"><section class="block" style="padding-block-start:0"><ol class="steps">' +
+    '<li><span class="n">01</span><h3>Tell us your idea</h3><p>Describe what you need, the size, and how many. Add a link if you have design files.</p></li>' +
+    '<li><span class="n">02</span><h3>We review it</h3><p>We check whether it can be printed well and what it will need.</p></li>' +
+    '<li><span class="n">03</span><h3>Price and timing</h3><p>You receive a quote and an estimated timeframe to approve.</p></li>' +
+    '<li><span class="n">04</span><h3>Production</h3><p>Printing begins once you approve the quote and details.</p></li></ol></section>' +
+    '<div class="form-panel" style="margin-bottom:3rem"><h2 style="margin-bottom:1rem">Custom print enquiry</h2><form data-form="custom" class="form-grid">' +
+    F('custom', 'Your name', 'name', { req: 1, ac: 'name' }) + F('custom', 'Email', 'email', { req: 1, type: 'email', ac: 'email' }) +
+    F('custom', 'Business name', 'business', { ac: 'organization' }) + F('custom', 'Quantity needed', 'quantity', { req: 1, type: 'number', extra: 'min="1" step="1" inputmode="numeric"' }) +
+    F('custom', 'What would you like made?', 'idea', { req: 1, type: 'textarea', full: 1, rows: 5, ph: 'What it is, what it is for, approximate size in millimetres' }) +
+    F('custom', 'Link to design files', 'files', { type: 'url', ph: 'Google Drive, Dropbox or similar link' }) + F('custom', 'Date you need it by', 'deadline', { ph: 'e.g. end of November' }) +
+    formEnd('Send enquiry') + '</form></div></div>';
+}
+
+function aboutView() {
+  return pageHead('About us', 'An Australian 3D printing business', 'Useful products, steady quality and reliable bulk supply.') +
+    '<div class="wrap"><div class="copy" style="padding-bottom:3rem">' +
+    exampleNotice('Add your own story, photos and details to this page before launch.') +
+    '<h2>Who we are</h2><p>Hamilton Prints is an Australian 3D printing business. We make practical products and supply them in bulk to businesses, retailers and event organisers, as well as to individual customers.</p>' +
+    '<h2>What we make</h2><p>We focus on repeatable products that print well in quantity: display items, desk and cable accessories, small storage products and promotional pieces. If you need something that is not in the shop, we are happy to look at custom work.</p>' +
+    '<h2>How we print</h2><p>Our products are printed on a Bambu Lab A1, which has a build volume of 256 &times; 256 &times; 256 mm. That size suits compact products made in batches.</p>' +
+    '<h2>Working with us</h2><p>Tell us what you need. We confirm the details and the price with you before production starts.</p>' +
+    '<div class="actions"><a class="btn btn-primary" href="#bulk">Request a bulk quote</a><a class="btn btn-ghost" href="#contact">Contact us</a></div></div></div>';
+}
+
+function contactView() {
+  return pageHead('Contact', 'Questions about an order or pricing?', 'Send a message and we will get back to you.') +
+    '<div class="wrap"><div class="two" style="padding-bottom:3rem"><div class="copy"><h2>Email</h2>' + emailLine() +
+    exampleNotice('This email address is a placeholder. Change it in CONFIG at the top of the site file.') +
+    '<h2>Location</h2><p>Australia</p><h2>For bulk quotes</h2><p>The <a href="#bulk">bulk order page</a> collects everything we need to price your order.</p></div>' +
+    '<div class="form-panel"><form data-form="contact" class="form-grid">' +
+    F('contact', 'Your name', 'name', { req: 1, ac: 'name' }) + F('contact', 'Email', 'email', { req: 1, type: 'email', ac: 'email' }) +
+    F('contact', 'Topic', 'topic', { type: 'select', full: 1, options: [['Product question', 'Product question'], ['Bulk pricing', 'Bulk pricing'], ['An existing order', 'An existing order'], ['Something else', 'Something else']] }) +
+    F('contact', 'Message', 'message', { req: 1, type: 'textarea', full: 1, rows: 5 }) + formEnd('Send message') + '</form></div></div></div>';
+}
+
+function cartView() {
+  const c = cartCalc();
+  if (!c.lines.length) return pageHead('Cart', 'Your cart is empty', 'Add a product to see bulk pricing here.') + '<div class="wrap" style="padding-bottom:3rem"><a class="btn btn-primary" href="#shop">Browse products</a></div>';
+  const rows = c.lines.map(l => '<div class="line"><div class="thumb">' + art(l.p.art, l.colour) + '</div><div class="info"><h3>' + esc(l.p.name) + '</h3><span class="small">Colour: ' + esc(l.colour) + ' &middot; ' +
+    (l.u == null ? 'Quote required' : money.format(l.u) + ' each') + '</span>' +
+    '<div class="stepper"><button type="button" data-action="cart-dec" data-i="' + l.i + '" aria-label="Decrease quantity">&minus;</button><input class="cart-qty" data-i="' + l.i + '" type="number" min="1" inputmode="numeric" value="' + l.qty + '" aria-label="Quantity for ' + esc(l.p.name) + '"><button type="button" data-action="cart-inc" data-i="' + l.i + '" aria-label="Increase quantity">+</button></div>' +
+    '<button type="button" class="linklike" data-action="cart-remove" data-i="' + l.i + '">Remove</button></div>' +
+    '<div class="tot">' + (l.total == null ? 'Quote' : money.format(l.total)) + '</div></div>').join('');
+  return pageHead('Cart', 'Your cart', 'Prices step down automatically when you add more of the same product, whatever the colour.') +
+    '<div class="wrap" style="padding-bottom:3rem"><div class="lines">' + rows + '</div><div class="totals">' +
+    '<div><span>Subtotal' + (c.quotes ? ' (excluding quote items)' : '') + '</span><span>' + money.format(c.sub) + '</span></div>' +
+    '<div class="small"><span>Delivery</span><span>Confirmed with your order</span></div>' +
+    (c.quotes ? '<p class="small">' + c.quotes + (c.quotes === 1 ? ' item needs' : ' items need') + ' a personalised quote. We will price ' + (c.quotes === 1 ? 'it' : 'them') + ' when we confirm your order.</p>' : '') +
+    '<div class="grand"><span>Total so far</span><span>' + money.format(c.sub) + '</span></div>' +
+    '<div class="actions"><a class="btn btn-primary" href="#checkout">Continue to checkout</a><a class="btn btn-ghost" href="#shop">Keep shopping</a></div></div></div>';
+}
+
+function checkoutView() {
+  const c = cartCalc();
+  if (!c.lines.length) return pageHead('Checkout', 'Your cart is empty', 'Add a product first.') + '<div class="wrap" style="padding-bottom:3rem"><a class="btn btn-primary" href="#shop">Browse products</a></div>';
+  const states = ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA'].map(s => [s, s]);
+  return pageHead('Checkout', 'Send your order request', 'We confirm price, delivery and payment with you before production starts.') +
+    '<div class="wrap"><div class="two" style="padding-bottom:3rem"><div class="copy"><h2>Your order</h2><ul>' +
+    c.lines.map(l => '<li>' + esc(lineText(l)) + '</li>').join('') + '</ul>' +
+    '<p><strong>Subtotal: ' + money.format(c.sub) + '</strong>' + (c.quotes ? ' plus quote items' : '') + '</p>' +
+    exampleNotice('Online payments are not connected on this site yet. Orders are sent as requests. See the launch guide to add payments.') + '</div>' +
+    '<div class="form-panel"><form data-form="checkout" class="form-grid">' +
+    F('checkout', 'Your name', 'name', { req: 1, ac: 'name' }) + F('checkout', 'Business name', 'business', { ac: 'organization' }) +
+    F('checkout', 'Email', 'email', { req: 1, type: 'email', ac: 'email' }) + F('checkout', 'Phone', 'phone', { type: 'tel', ac: 'tel' }) +
+    F('checkout', 'Delivery address', 'address', { req: 1, type: 'textarea', full: 1, rows: 3, ph: 'Street, suburb, postcode' }) +
+    F('checkout', 'State or territory', 'state', { req: 1, type: 'select', options: states }) +
+    F('checkout', 'Notes', 'notes', { type: 'textarea', full: 1, rows: 3, ph: 'Branding, deadline or anything else' }) +
+    formEnd('Send order request') + '</form></div></div></div>';
+}
+
+function policyView(eyebrow, title, sections) {
+  return pageHead(eyebrow, title) + '<div class="wrap"><div class="prose">' +
+    exampleNotice('Draft template. Replace the [bracketed] text with your own details, and have the final wording reviewed before launch.') +
+    sections.map(s => '<h2>' + s[0] + '</h2>' + s[1]).join('') + '</div></div>';
+}
+const shippingView = () => policyView('Information', 'Shipping', [
+  ['Production and dispatch', '<p>Products are made to order. We confirm an estimated production and dispatch time when we confirm your order. [Add your usual turnaround here.]</p>'],
+  ['Delivery', '<p>[Add your carriers, delivery areas and shipping costs.] Shipping for bulk orders is quoted with your order.</p>'],
+  ['Tracking', '<p>[Explain whether you provide tracking numbers.]</p>'],
+  ['Damaged or lost parcels', '<p>Contact us at ' + esc(CONFIG.email) + ' as soon as possible with your order details and photos, and we will work out the next step with you.</p>']]);
+const returnsView = () => policyView('Information', 'Returns', [
+  ['Consumer guarantees', '<p>Our goods come with guarantees that cannot be excluded under the Australian Consumer Law. You are entitled to a replacement or refund for a major failure and compensation for any other reasonably foreseeable loss or damage. You are also entitled to have the goods repaired or replaced if they fail to be of acceptable quality and the failure does not amount to a major failure.</p>'],
+  ['Custom and bulk orders', '<p>[State your policy for made-to-order, branded and bulk products, for example whether they can be returned when there is no fault.]</p>'],
+  ['Making a claim', '<p>Email ' + esc(CONFIG.email) + ' with your order details and photos of the problem. [Add how long you will take to respond.]</p>']]);
+const privacyView = () => policyView('Information', 'Privacy', [
+  ['What we collect', '<p>When you use a form on this site we collect the details you enter, such as your name, business name, email, phone number, delivery address and order or enquiry details.</p>'],
+  ['Why we collect it', '<p>We use it to reply to you, prepare quotes and fulfil orders.</p>'],
+  ['Your cart', '<p>Your cart is stored in your own browser on your device. It is not sent to us until you submit an order request.</p>'],
+  ['Other services', '<p>[List the services you use to receive forms, take payments or send email, and link to their privacy policies.]</p>'],
+  ['Access and contact', '<p>To ask what we hold about you, or to have it corrected or removed, email ' + esc(CONFIG.email) + '.</p>']]);
+const termsView = () => policyView('Information', 'Terms of sale', [
+  ['Quotes and orders', '<p>Orders are confirmed only after we agree price, quantity, colours and timing with you. Quotes are valid for [number] days.</p>'],
+  ['Prices and payment', '<p>All prices are in Australian dollars (AUD). [State whether prices include GST, your payment methods and when payment is due.]</p>'],
+  ['Custom designs and branding', '<p>If you supply artwork, logos or designs, you confirm you have the right to use them. Custom orders are reviewed before production, and we may decline a request.</p>'],
+  ['Your rights', '<p>Nothing in these terms limits your rights under the Australian Consumer Law.</p>'],
+  ['Governing law', '<p>These terms are governed by the laws of [state or territory], Australia.</p>']]);
+
+const ROUTES = {
+  home: { t: 'Hamilton Prints | Bulk 3D printing in Australia', v: homeView },
+  shop: { t: 'Shop | Hamilton Prints', v: shopView },
+  bulk: { t: 'Bulk orders | Hamilton Prints', v: bulkView },
+  custom: { t: 'Custom 3D printing | Hamilton Prints', v: customView },
+  about: { t: 'About | Hamilton Prints', v: aboutView },
+  contact: { t: 'Contact | Hamilton Prints', v: contactView },
+  cart: { t: 'Cart | Hamilton Prints', v: cartView },
+  checkout: { t: 'Checkout | Hamilton Prints', v: checkoutView },
+  shipping: { t: 'Shipping | Hamilton Prints', v: shippingView },
+  returns: { t: 'Returns | Hamilton Prints', v: returnsView },
+  privacy: { t: 'Privacy | Hamilton Prints', v: privacyView },
+  terms: { t: 'Terms of sale | Hamilton Prints', v: termsView }
+};
+
+let current = '', firstLoad = true;
+function render(keepScroll) {
+  const raw = (location.hash || '').replace('#', '');
+  const key = ROUTES[raw] ? raw : 'home';
+  const main = $('#main'), dlg = $('#pd-dialog');
+  if (dlg.open) dlg.close();
+  main.innerHTML = ROUTES[key].v();
+  document.title = ROUTES[key].t;
+  $$('.nav a, .cart-btn').forEach(a => { if (a.dataset.r === key) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  $('#nav').classList.remove('open'); $('#menuBtn').setAttribute('aria-expanded', 'false');
+  if (key === 'shop') { $('#sort').value = state.sort; renderGrid(); }
+  if (key === 'bulk' && state.prefill) {
+    const p = byId(state.prefill.id);
+    if (p) { $('#f-bulk-product').value = p.name; $('#f-bulk-quantity').value = state.prefill.qty; $('#f-bulk-colour').value = state.prefill.colour || ''; }
+    state.prefill = null;
+  }
+  if (!keepScroll && key !== current) { window.scrollTo(0, 0); if (!firstLoad) main.focus({ preventScroll: true }); }
+  current = key; firstLoad = false;
+}
+
+/* ---------- product dialog ---------- */
+let pd = null;
+function openProduct(id) {
+  const p = byId(id); if (!p) return;
+  pd = { p: p, colour: p.colours[0], qty: 1 };
+  const dlg = $('#pd-dialog');
+  dlg.innerHTML = '<div class="pd"><div class="pd-media"><div class="pd-art" id="pd-art"></div>' + (CONFIG.showExampleNotices ? '<span class="ph-tag">Placeholder image</span>' : '') + '</div>' +
+    '<div class="pd-info"><button class="pd-close btn btn-ghost btn-sm" type="button" data-action="close">Close</button>' +
+    '<span class="p-cat">' + esc(p.cat) + '</span><h2 id="pd-title">' + esc(p.name) + '</h2><p>' + esc(p.desc) + '</p>' +
+    '<dl class="meta"><dt>Size</dt><dd>' + esc(p.size) + '</dd><dt>Standard price</dt><dd>' + money.format(p.price) + ' each</dd></dl>' +
+    '<fieldset><legend>Colour: <span id="pd-colour"></span></legend><div class="swatches" id="pd-sw">' +
+    p.colours.map(c => '<button type="button" class="sw" data-action="swatch" data-colour="' + c + '" style="--c:' + COLOURS[c] + '" aria-label="' + c + '" aria-pressed="false"></button>').join('') + '</div></fieldset>' +
+    '<div class="field"><label for="pd-qty">Quantity</label><div class="stepper"><button type="button" data-action="pd-dec" aria-label="Decrease quantity">&minus;</button><input id="pd-qty" type="number" min="1" inputmode="numeric" value="1"><button type="button" data-action="pd-inc" aria-label="Increase quantity">+</button></div></div>' +
+    '<div class="table-scroll"><table class="tiers"><thead><tr><th>Quantity</th><th>Per unit</th></tr></thead><tbody id="pd-tiers"></tbody></table></div>' +
+    '<p class="sum" id="pd-sum" aria-live="polite"></p>' +
+    '<div class="actions"><button class="btn btn-primary" type="button" data-action="add-pd">Add to cart</button><button class="btn btn-ghost" type="button" data-action="quote">Request a quote</button></div>' +
+    '</div></div>';
+  updatePD(); dlg.showModal();
+}
+function updatePD(skipInput) {
+  const p = pd.p, t = tierFor(pd.qty);
+  $('#pd-art').innerHTML = art(p.art, pd.colour, p.name + ' in ' + pd.colour);
+  $('#pd-colour').textContent = pd.colour;
+  $$('#pd-sw .sw').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.colour === pd.colour)));
+  if (!skipInput) $('#pd-qty').value = pd.qty;
+  $('#pd-tiers').innerHTML = TIERS.map(x => '<tr' + (x === t ? ' class="active"' : '') + '><td>' + tierLabel(x) + '</td><td>' + (x.quote ? 'Quote' : money.format(priceAt(p, x))) + '</td></tr>').join('');
+  const u = priceAt(p, t);
+  $('#pd-sum').textContent = u == null ? pd.qty + ' units: we prepare a personalised quote for this quantity.' : pd.qty + ' × ' + money.format(u) + ' = ' + money.format(round2(u * pd.qty));
+}
+function addFromDialog() {
+  const k = cart.find(l => l.id === pd.p.id && l.colour === pd.colour);
+  if (k) k.qty += pd.qty; else cart.push({ id: pd.p.id, colour: pd.colour, qty: pd.qty });
+  saveCart(); toast('Added ' + pd.qty + ' × ' + pd.p.name + ' to your cart'); $('#pd-dialog').close();
+}
+
+/* ---------- forms ---------- */
+const labels = { name: 'Name', business: 'Business', email: 'Email', phone: 'Phone', product: 'Product', quantity: 'Quantity', colour: 'Colour', requirements: 'Requirements', idea: 'Request', files: 'Design files', deadline: 'Needed by', topic: 'Topic', message: 'Message', address: 'Delivery address', state: 'State', notes: 'Notes' };
+function summaryText(kind, data, extra) {
+  const lines = Object.keys(data).filter(k => data[k] && k.charAt(0) !== '_').map(k => (labels[k] || k) + ': ' + data[k]);
+  return CONFIG.businessName + ' - ' + kind + ' request\n\n' + lines.join('\n') + (extra ? '\n\n' + extra : '');
+}
+function fallbackBox(text, headline) {
+  return '<div class="box"><strong>' + headline + '</strong><span>Copy the details below and email them to ' + esc(CONFIG.email) + '.</span>' +
+    '<textarea readonly aria-label="Request details" id="fallback-text">' + esc(text) + '</textarea>' +
+    '<div class="actions"><button type="button" class="btn btn-primary btn-sm" data-action="copy-text">Copy details</button></div></div>';
+}
+async function sendForm(f) {
+  const kind = f.dataset.form, st = $('.form-status', f), btn = $('[type=submit]', f);
+  const data = Object.fromEntries(new FormData(f).entries());
+  let extra = '';
+  if (kind === 'checkout') {
+    const c = cartCalc();
+    extra = 'Order:\n' + c.lines.map(lineText).join('\n') + '\nSubtotal: ' + money.format(c.sub) + (c.quotes ? ' plus quote items' : '');
+    data.order = c.lines.map(lineText).join('; ');
+  }
+  data._form = kind;
+  const text = summaryText(kind, data, extra);
+  st.className = 'form-status full';
+  if (!CONFIG.formEndpoint) { st.innerHTML = fallbackBox(text, 'Nothing was sent. This form is not connected to an email service yet.'); return; }
+  btn.disabled = true; st.textContent = 'Sending...';
+  try {
+    const r = await fetch(CONFIG.formEndpoint, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    if (!r.ok) throw new Error('status ' + r.status);
+    st.className = 'form-status full ok'; st.textContent = 'Thank you. Your ' + (kind === 'checkout' ? 'order request' : 'message') + ' has been sent.';
+    f.reset();
+    if (kind === 'checkout') { cart = []; saveCart(); }
+  } catch (err) {
+    st.innerHTML = fallbackBox(text, 'Sorry, that did not send.');
+  }
+  btn.disabled = false;
+}
+
+/* ---------- misc ---------- */
+let toastTimer;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2800); }
+function copy(text, ok) {
+  const fallback = () => { const ta = $('#fallback-text'); if (ta) { ta.focus(); ta.select(); } toast('Select the text and copy it'); };
+  try { navigator.clipboard.writeText(text).then(() => toast(ok), fallback); } catch (e) { fallback(); }
+}
+function setCartQty(i, n) {
+  if (!cart[i]) return;
+  n = Math.max(0, Math.min(100000, Math.floor(n) || 0));
+  if (n === 0) cart.splice(i, 1); else cart[i].qty = n;
+  saveCart(); render(true);
+}
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-action]'); if (!t) return;
+  const a = t.dataset.action;
+  if (a === 'skip') { e.preventDefault(); $('#main').focus(); }
+  else if (a === 'menu') { const n = $('#nav'); const open = n.classList.toggle('open'); t.setAttribute('aria-expanded', String(open)); }
+  else if (a === 'open') openProduct(t.dataset.id);
+  else if (a === 'close') $('#pd-dialog').close();
+  else if (a === 'chip') { state.cat = t.dataset.cat; renderGrid(); }
+  else if (a === 'reset') { state.cat = 'All'; state.q = ''; $('#q').value = ''; renderGrid(); }
+  else if (a === 'swatch') { pd.colour = t.dataset.colour; updatePD(true); }
+  else if (a === 'pd-inc') { pd.qty = Math.min(100000, pd.qty + 1); updatePD(); }
+  else if (a === 'pd-dec') { pd.qty = Math.max(1, pd.qty - 1); updatePD(); }
+  else if (a === 'add-pd') addFromDialog();
+  else if (a === 'quote') { state.prefill = { id: pd.p.id, qty: pd.qty, colour: pd.colour }; if (location.hash === '#bulk') { $('#pd-dialog').close(); render(); } else { location.hash = 'bulk'; } }
+  else if (a === 'cart-inc') setCartQty(+t.dataset.i, cart[+t.dataset.i].qty + 1);
+  else if (a === 'cart-dec') setCartQty(+t.dataset.i, cart[+t.dataset.i].qty - 1);
+  else if (a === 'cart-remove') setCartQty(+t.dataset.i, 0);
+  else if (a === 'copy-email') copy(CONFIG.email, 'Email address copied');
+  else if (a === 'copy-text') { const ta = $('#fallback-text'); copy(ta ? ta.value : '', 'Details copied'); }
+});
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.id === 'pd-qty') { pd.qty = Math.max(1, Math.min(100000, parseInt(t.value, 10) || 1)); updatePD(true); }
+  else if (t.id === 'q') { state.q = t.value; renderGrid(); }
+});
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t.id === 'sort') { state.sort = t.value; renderGrid(); }
+  else if (t.classList.contains('cart-qty')) setCartQty(+t.dataset.i, parseInt(t.value, 10) || 0);
+});
+document.addEventListener('submit', e => {
+  const f = e.target.closest('form[data-form]'); if (!f) return;
+  e.preventDefault(); sendForm(f);
+});
+$('#pd-dialog').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+window.addEventListener('hashchange', () => render());
+
+$('#footEmail').innerHTML = '<span>' + esc(CONFIG.email) + '</span>';
+$('#yr').textContent = '© ' + new Date().getFullYear();
+saveCart();
+render();
+})();
+</script>
+
+</body>
+</html>
